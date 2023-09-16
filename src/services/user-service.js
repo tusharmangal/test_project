@@ -23,6 +23,52 @@ async function create(data) {
     }
 }
 
+async function getuser(id){
+    try{
+        const user = await userRepo.get(id);
+        return user;
+    } catch(error){
+        console.log(error);
+        if(error.statusCode==StatusCodes.NOT_FOUND){
+
+            throw new AppError('THE user you requested is not present',error.statusCode);
+        }
+        throw new AppError('cannot fetch data of all the users',StatusCodes.INTERNAL_SERVER_ERROR);
+
+    }
+}
+
+async function destroyUser(id){
+    try{
+        const user = await userRepo.destroy(id);
+        return user;
+    } catch(error){
+        console.log(error);
+        if(error.statusCode==StatusCodes.NOT_FOUND){
+
+            throw new AppError('THE user you requested is not present',error.statusCode);
+        }
+        throw new AppError('cannot fetch data of all the users',StatusCodes.INTERNAL_SERVER_ERROR);
+
+    }
+}
+
+async function updateUser(id,data){
+    try{
+        const user = await userRepo.update(id,data);
+        return user;
+    } catch(error){
+        console.log(error);
+        if(error.statusCode==StatusCodes.NOT_FOUND){
+
+            throw new AppError('THE user you requested is not present',error.statusCode);
+        }
+        throw new AppError('cannot fetch data of all the users',StatusCodes.INTERNAL_SERVER_ERROR);
+
+    }
+}
+
+
 async function signin(data) {
     try {
         const user = await userRepo.getUserByEmail(data.user_email);
@@ -72,5 +118,8 @@ async function isAuthenticated(token) {
 module.exports = {
     create,
     signin,
-    isAuthenticated
+    isAuthenticated,
+    getuser,
+    destroyUser,
+    updateUser
 }

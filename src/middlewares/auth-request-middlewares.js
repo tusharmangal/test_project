@@ -5,7 +5,14 @@ const AppError = require('../utils/errors/app-error');
 const { UserService } = require('../services');
 
 function validateAuthRequest(req, res, next) {
-    if(!req.body.email) {
+    if(!req.body.user_name) {
+        ErrorResponse.message = 'Something went wrong while authenticating user';
+        ErrorResponse.error = new AppError(['name not found in the incoming request in the correct form'], StatusCodes.BAD_REQUEST);
+        return res
+                .status(StatusCodes.BAD_REQUEST)
+                .json(ErrorResponse);
+    }
+    if(!req.body.user_email) {
         ErrorResponse.message = 'Something went wrong while authenticating user';
         ErrorResponse.error = new AppError(['Email not found in the incoming request in the correct form'], StatusCodes.BAD_REQUEST);
         return res
@@ -19,7 +26,25 @@ function validateAuthRequest(req, res, next) {
                 .status(StatusCodes.BAD_REQUEST)
                 .json(ErrorResponse);
     }
+
+    if(!req.body.user_image) {
+        ErrorResponse.message = 'Something went wrong while authenticating user';
+        ErrorResponse.error = new AppError(['image not found in the incoming request in the correct form'], StatusCodes.BAD_REQUEST);
+        return res
+                .status(StatusCodes.BAD_REQUEST)
+                .json(ErrorResponse);
+    }
+    if(!req.body.total_orders) {
+        ErrorResponse.message = 'Something went wrong while authenticating user';
+        ErrorResponse.error = new AppError(['total_orders not found in the incoming request in the correct form'], StatusCodes.BAD_REQUEST);
+        return res
+                .status(StatusCodes.BAD_REQUEST)
+                .json(ErrorResponse);
+    }
+
+
     next();
+
 }
 
 async function checkAuth(req, res, next) {

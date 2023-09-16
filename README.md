@@ -1,7 +1,6 @@
-This is a base node js project template, which anyone can use as it has been prepared, by keeping some of the most important code principles and project management recommendations. Feel free to change anything. 
+This is a assigment node js project template, here uses a sequelize orm and jwt library to authenticate a request
 
-
-`src` -> Inside the src folder all the actual source code regarding the project will reside, this will not include any kind of tests. (You might want to make separate tests folder)
+`src` -> Inside the src folder all the actual source code regarding the project will reside
 
 Lets take a look inside the `src` folder
 
@@ -21,7 +20,7 @@ Lets take a look inside the `src` folder
 
 ### Setup the project
 
- - Download this template from github and open it in your favourite text editor. 
+ - Download this template from github and open it in  text editor. 
  - Go inside the folder path and execute the following command:
   ```
   npm install

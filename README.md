@@ -1,4 +1,4 @@
-This is a assigment node js project template, here uses a sequelize orm and jwt library to authenticate a request
+In this assigment , we  uses a sequelize orm and jwt library to authenticate a request
 
 `src` -> Inside the src folder all the actual source code regarding the project will reside
 
